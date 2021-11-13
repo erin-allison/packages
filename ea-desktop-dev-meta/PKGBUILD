@@ -1,0 +1,21 @@
+# Maintainer: Erin Allison <eallison@andrettikarting.com>
+
+pkgname=ea-desktop-dev-meta
+pkgver=0.0.1
+pkgrel=1
+pkgdesc="Common packages for desktop computers with development applications."
+arch=('x86_64')
+depends=()
+install=$pkgname.install
+
+package() {
+	depends+=('ea-desktop-meta')
+
+	depends+=('apachedirectorystudio')
+
+	depends+=('azuredatastudio' 'code')
+
+	depends+=('rider-eap' 'aspnet-targeting-pack-preview-bin' 'dotnet-sdk-preview-bin')
+
+	depends+=('kube-prompt' 'kubectl' 'krew' 'helm')
+}

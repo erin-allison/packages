@@ -1,0 +1,25 @@
+# Maintainer: Erin Allison <eanillison@andrettikarting.com>
+
+pkgname=ea-desktop-meta
+pkgver=0.0.1
+pkgrel=1
+pkgdesc="Common packages for desktop cmoputers."
+arch=('x86_64')
+depends=()
+install=$pkgname.install
+
+package() {
+	depends+=('ea-common-meta')
+
+	depends+=('systemd-dbus-ssh-agent')
+
+	depends+=('spotify-tui' 'spotifyd')
+
+	depends+=('remmina-git' 'freerdp' 'remmina-plugin-teamviewer')
+
+	depends+=('keybase' 'kbfs' 'nextcloud-client')
+
+	depends+=('slack-desktop') 
+
+	depends+=('discord_arch_electron')
+}

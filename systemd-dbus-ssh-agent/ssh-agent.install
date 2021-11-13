@@ -1,0 +1,9 @@
+post_install() {
+	install -d /usr/lib/systemd/user/graphical-session-pre.target.wants/
+	ln -s /usr/lib/systemd/user/ssh-agent.service /usr/lib/systemd/user/graphical-session-pre.target.wants/ssh-agent.service
+}
+
+pre_remove() {
+	rm /usr/lib/systemd/user/graphical-session-pre.target.wants/ssh-agent.service
+	rm -d /usr/lib/systemd/user/graphical-session-pre.target.wants/ 2>/dev/null || true
+}
