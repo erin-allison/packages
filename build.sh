@@ -21,7 +21,7 @@ pushd "$PKGDEST"
 
 for pkg in `find -name '*.zst'`
 do
-	repo-add "repo.db.tar.gz" "$pkg" --sign --key "$key" --verify
+	repo-add "ea-github.db.tar.gz" "$pkg" --sign --key "$key" --verify
 done
 
 
