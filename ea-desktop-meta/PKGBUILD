@@ -1,7 +1,7 @@
 # Maintainer: Erin Allison <eanillison@andrettikarting.com>
 
 pkgname=ea-desktop-meta
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Common packages for desktop cmoputers."
 arch=('x86_64')
@@ -19,7 +19,9 @@ package() {
 
 	depends+=('keybase' 'kbfs' 'nextcloud-client')
 
-	depends+=('slack-desktop') 
+	depends+=('slack-desktop' 'discord_arch_electron')
 
-	depends+=('discord_arch_electron')
+	depends+=('keepassxc')
+
+	depends+=('samba' 'cups')
 }

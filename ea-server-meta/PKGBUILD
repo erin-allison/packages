@@ -1,0 +1,13 @@
+# Maintainer: Erin Allison <eallison@andrettikarting.com>
+
+pkgname=ea-server-meta
+pkgver=0.0.2
+pkgrel=1
+pkgdesc="Common packages for server computers."
+arch=('x86_64')
+depends=()
+install=$pkgname.install
+
+package() {
+	depends+=('ea-common-meta')
+}

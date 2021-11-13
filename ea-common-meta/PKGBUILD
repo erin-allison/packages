@@ -1,7 +1,7 @@
 # Maintainer: Erin Allison <eallison@andrettikarting.com>
 
 pkgname=ea-common-meta
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Common packages for all computers."
 arch=('x86_64')
@@ -38,5 +38,5 @@ package() {
 	depends+=('yadm')
 
 	install -Dm644 "$srcdir"/ea-personal.crt "$pkgdir"/usr/share/ca-certificates/trust-source/anchors/ea-personal.crt
-	depends+=('htop')
+	depends+=('htop' 'sudo' 'openssh' 'nano' 'bind')
 }
