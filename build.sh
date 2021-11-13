@@ -3,26 +3,23 @@
 set -e
 
 key="4236391669901CBB4E8687C3635F855566C675DB"
-
 dir=$(cd -P -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)
-export PKGDEST="${dir}/./pkg"
 
-rm -fr "$PKGDEST"
-mkdir "$PKGDEST"
+mkdir -p pkg/
 
-for dir in `find . -mindepth 1 -maxdepth 1 -type d | grep -v "./.git" | grep -v "./pkg"`
-do
-	pushd "$dir"
-	makepkg -cC --sign --key "$key"
-	popd
-done
+sudo bash <<"EOF"
+id=`podman build -q .`
+podman run -it --rm -v $(pwd)/pkg/:/home/build/ea-private/ $id
+EOF
 
-pushd "$PKGDEST"
+pushd pkg
 
-for pkg in `find -name '*.zst'`
-do
-	repo-add "ea-github.db.tar.gz" "$pkg" --sign --key "$key" --verify
-done
+ln -sf ea-private.db.tar.xz ea-private.db
+ln -sf ea-private.db.tar.xz.sig ea-private.db.sig
+ln -sf ea-private.files.tar.xz ea-private.db
+ln -sf ea-private.files.tar.xz.sig ea-private.files.sig
 
+find . -name '*.zst' -exec gpg --default-key $key --batch --yes --detach-sign {} \; \
+                     -exec repo-add --sign --key $key ea-private.db.tar.xz {} +
 
-
+popd
