@@ -1,7 +1,7 @@
 # Maintainer: Erin Allison <eallison@andrettikarting.com>
 
 pkgname=ea-desktop-dev-meta
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="Common packages for desktop computers with development applications."
 arch=('x86_64')

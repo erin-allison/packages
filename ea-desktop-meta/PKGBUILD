@@ -1,7 +1,7 @@
-# Maintainer: Erin Allison <eanillison@andrettikarting.com>
+# Maintainer: Erin Allison <eallison@andrettikarting.com>
 
 pkgname=ea-desktop-meta
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="Common packages for desktop cmoputers."
 arch=('x86_64')
@@ -15,7 +15,7 @@ package() {
 
 	depends+=('spotify-tui' 'spotifyd')
 
-	depends+=('remmina-git' 'freerdp' 'remmina-plugin-teamviewer')
+	depends+=('remmina-git' 'freerdp')
 
 	depends+=('keybase' 'kbfs' 'nextcloud-client')
 
