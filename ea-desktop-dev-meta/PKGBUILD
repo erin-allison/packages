@@ -18,4 +18,6 @@ package() {
 	depends+=('rider-eap' 'aspnet-targeting-pack-preview-bin' 'dotnet-sdk-preview-bin')
 
 	depends+=('kube-prompt' 'kubectl' 'krew' 'helm')
+
+	depends+=('zenity')
 }

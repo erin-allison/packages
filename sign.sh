@@ -12,5 +12,6 @@ ln -sf ea-private.files.tar.xz.sig ea-private.files.sig
 
 find . -name '*.zst' -exec repo-add --sign --key $key ea-private.db.tar.xz {} +
 
-popd
+rm *.old
 
+popd
