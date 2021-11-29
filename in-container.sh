@@ -12,12 +12,15 @@ done
 echo ":: Building local packages..."
 $crema
 
+echo -e "\n[ea-private]\nSigLevel = Optional TrustAll\nServer = file:///home/build/ea-private/\n" |\
+	sudo tee --append /etc/pacman.conf > /dev/null
+
 echo ":: Recursively building dependencies..."
 while true
 do
-    sudo pacman --config /home/build/.config/crema/pacman-ea-private.conf -Sy
+    sudo pacman -Sy
     echo ":: Calculating missing dependencies..."
-    missing=$(pacman --config /home/build/.config/crema/pacman-ea-private.conf -Dkk 2>&1 |\
+    missing=$(pacman -Dkk 2>&1 |\
         egrep `echo $packages | sed 's/ /\\|/g'` |\
         cut -f2 -d"'")
         

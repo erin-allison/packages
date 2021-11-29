@@ -14,4 +14,6 @@ EOF
 ln -sf ea-private.db.tar.xz pkg/ea-private.db
 ln -sf ea-private.files.tar.xz pkg/ea-private.files
 
+rm pkg/*.old
+
 ./sign.sh
