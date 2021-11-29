@@ -15,7 +15,7 @@ package() {
 
 	depends+=('azuredatastudio' 'code')
 
-	depends+=('rider-eap' 'aspnet-targeting-pack-preview-bin' 'dotnet-sdk-preview-bin')
+	depends+=('rider-eap' 'aspnet-targeting-pack-preview-bin' 'aspnet-runtime-preview-bin' 'dotnet-sdk-preview-bin')
 
 	depends+=('kube-prompt' 'kubectl' 'krew' 'helm')
 
