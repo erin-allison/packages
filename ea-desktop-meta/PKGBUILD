@@ -2,7 +2,7 @@
 
 pkgname=ea-desktop-meta
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Common packages for desktop cmoputers."
 arch=('x86_64')
 depends=()
@@ -15,7 +15,7 @@ package() {
 
 	depends+=('spotify-tui' 'spotifyd')
 
-	depends+=('remmina-git' 'freerdp')
+	depends+=('remmina' 'freerdp')
 
 	depends+=('keybase' 'kbfs' 'nextcloud-client')
 

@@ -2,7 +2,7 @@
 
 pkgname=ea-server-vmhost-meta
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Common packages for server computers which will host VMs."
 arch=('x86_64')
 depends=()
@@ -11,5 +11,5 @@ install=$pkgname.install
 package() {
 	depends+=('ea-server-meta')
 
-	depends+=('libvirt' 'qemu' 'dmidecode' 'virtio-win' 'scream-git' 'vlmcsd-git' 'gettext' 'edk2-ovmf')
+	depends+=('libvirt' 'qemu' 'dmidecode' 'virtio-win' 'scream' 'vlmcsd' 'gettext' 'edk2-ovmf')
 }
