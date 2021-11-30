@@ -3,7 +3,7 @@ FROM docker.io/archlinux:base-devel
 RUN pacman -Syu --needed --noconfirm git nano sudo go asciidoctor rsync
 
 RUN echo "build ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/build && \
-    useradd build
+    useradd build -u 1000
 
 WORKDIR /root
 
