@@ -15,7 +15,7 @@ sha256sums=('d88fa9fae087fe4819cb274e39c8931d53aa85766d58add1c37f73b1122ccee1'
 package() {
 	depends+=('base' 'base-devel-meta')
 
-	depends+=('linux-zen' 'linux-zen-headers' 'intel-ucode')
+	depends+=('linux-zen' 'linux-zen-headers' 'intel-ucode' 'linux-firmware')
 
 	depends+=('systemd-numlockontty')
 

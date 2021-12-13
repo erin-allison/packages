@@ -10,7 +10,7 @@ depends=()
 package() {
 	depends+=('ea-base')
 
-	depends+=('plasma-meta' 'plasma-wayland-session' 'firefox' 'kate' 'dolphin-plugins')
+	depends+=('plasma-meta' 'plasma-wayland-session' 'firefox' 'kate' 'konsole' 'dolphin-plugins')
 
 	depends+=('systemd-dbus-ssh-agent')
 
