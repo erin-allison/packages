@@ -27,10 +27,6 @@ jobs:
         run: |
           pacman -Syu --needed --noconfirm git go nano asciidoctor rsync
 
-      - name: Load GPG Public Keys
-        run: |
-          gpg --recv-keys 0AB9E991C6AF658B #zfs-on-linux
-
       - name: Set up crema
         run: |
           pushd /tmp > /dev/null
@@ -54,6 +50,9 @@ jobs:
 
       - name: Add additional dependencies
         run: |
+          gpg --recv-keys 6AD860EED4598027 # Tony Hutter (GPG key for signing ZFS releases) <hutter2@llnl.gov>
+          gpg --recv-keys 0AB9E991C6AF658B # Brian Behlendorf <behlendorf1@llnl.gov>
+
           echo -e "\n[ea-private]\nSigLevel = Optional TrustAll\nServer = file:///home/build/ea-private/\n" >> /etc/pacman.conf
 
           i=0
