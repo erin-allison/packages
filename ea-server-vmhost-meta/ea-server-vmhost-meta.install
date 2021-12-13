@@ -1,7 +1,0 @@
-post_install() {
-	echo
-}
-
-pre_remove() {
-	echo
-}

@@ -1,0 +1,12 @@
+# Maintainer: Erin Allison <eallison@andrettikarting.com>
+
+pkgname=ea-base-server
+pkgver=0.0.3
+pkgrel=1
+pkgdesc="Minimal package set to define a basic Arch Linux installation with server utilities"
+arch=('x86_64')
+depends=()
+
+package() {
+	depends+=('ea-base')
+}

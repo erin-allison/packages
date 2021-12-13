@@ -1,19 +1,14 @@
 # Maintainer: Erin Allison <eallison@andrettikarting.com>
 
-pkgname=ea-desktop-dev-meta
+pkgname=ea-base-desktop-devel
 pkgver=0.0.3
-pkgrel=1
-pkgdesc="Common packages for desktop computers with development applications."
+pkgrel=2
+pkgdesc="Minimal package set to define a basic Arch Linux installation with a desktop environment and development utilities"
 arch=('x86_64')
 depends=()
-install=$pkgname.install
 
 package() {
-	depends+=('ea-desktop-meta')
-
-#	depends+=('apachedirectorystudio')
-
-#	depends+=('azuredatastudio' 'code')
+	depends+=('ea-base-desktop')
 
 	depends+=('rider' 'aspnet-targeting-pack' 'aspnet-runtime' 'dotnet-sdk')
 

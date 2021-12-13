@@ -1,15 +1,14 @@
 # Maintainer: Erin Allison <eallison@andrettikarting.com>
 
-pkgname=ea-server-vmhost-meta
+pkgname=ea-base-server-vmhost
 pkgver=0.0.3
 pkgrel=2
-pkgdesc="Common packages for server computers which will host VMs."
+pkgdesc="Minimal package set to define a basic Arch Linux installation with server utilities and a hypervisor"
 arch=('x86_64')
 depends=()
-install=$pkgname.install
 
 package() {
-	depends+=('ea-server-meta')
+	depends+=('ea-base-server')
 
 	depends+=('libvirt' 'qemu' 'dmidecode' 'virtio-win' 'scream' 'vlmcsd' 'gettext' 'edk2-ovmf')
 }
