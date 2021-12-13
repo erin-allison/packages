@@ -27,6 +27,10 @@ jobs:
         run: |
           pacman -Syu --needed --noconfirm git go nano asciidoctor rsync
 
+      - name: Load GPG Public Keys
+        run: |
+          gpg --recv-keys 0AB9E991C6AF658B #zfs-on-linux
+
       - name: Set up crema
         run: |
           pushd /tmp > /dev/null
@@ -56,7 +60,7 @@ jobs:
           while true
           do
            i=$((i+1))
-           echo "::notice ::Calculating missing dependencies (pass 1)..."
+           echo "::notice ::Calculating missing dependencies (pass $i)..."
            pacman -Sy
            packages=`find /home/build/source/ -name PKGBUILD -exec dirname {} \; | xargs basename -a`
            missing=$(pacman -Dkk 2>&1 | egrep `echo $packages | sed 's/ /\\|/g'` | cut -f2 -d"'")
