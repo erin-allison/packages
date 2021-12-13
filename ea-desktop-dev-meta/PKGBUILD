@@ -11,11 +11,11 @@ install=$pkgname.install
 package() {
 	depends+=('ea-desktop-meta')
 
-	depends+=('apachedirectorystudio')
+#	depends+=('apachedirectorystudio')
 
-	depends+=('azuredatastudio' 'code')
+#	depends+=('azuredatastudio' 'code')
 
-	depends+=('rider-eap' 'aspnet-targeting-pack-preview-bin' 'aspnet-runtime-preview-bin' 'dotnet-sdk-preview-bin')
+	depends+=('rider' 'aspnet-targeting-pack' 'aspnet-runtime' 'dotnet-sdk')
 
 	depends+=('kube-prompt' 'kubectl' 'krew' 'helm')
 

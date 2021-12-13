@@ -13,15 +13,15 @@ package() {
 
 	depends+=('systemd-dbus-ssh-agent')
 
-	depends+=('spotify-tui' 'spotifyd')
+	depends+=('spotify-tui-bin' 'spotifyd')
 
 	depends+=('remmina' 'freerdp')
 
 	depends+=('keybase' 'kbfs' 'nextcloud-client')
 
-	depends+=('slack-desktop' 'discord_arch_electron')
+	depends+=('slack-desktop' 'discord')
 
 	depends+=('keepassxc')
 
-	depends+=('samba' 'cups')
+	depends+=('samba' 'cups' 'brother-mfc-7860dw')
 }
