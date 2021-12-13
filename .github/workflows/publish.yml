@@ -1,0 +1,119 @@
+name: Publish
+
+on:
+  push:
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    container:
+      image: archlinux:base-devel
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up build user
+        run: |
+          echo "build ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/build
+          useradd build -u 1000
+          mkdir -p /home/build/.config/crema
+          echo -e "[ea-private]\nRemotePath = \"/home/build/ea-private/\"\nSignDB = false" > /home/build/.config/crema/repos.conf
+          mkdir /home/build/ea-private/ /home/build/source
+          cp -r ./* /home/build/source/
+          chown -R build: /home/build
+          echo 'MAKEFLAGS="-j2"' >> /etc/makepkg.conf
+
+      - name: Install dependencies
+        run: |
+          pacman -Syu --needed --noconfirm git go nano asciidoctor rsync
+
+      - name: Set up crema
+        run: |
+          pushd /tmp > /dev/null
+          curl https://gitlab.com/mipimipi/crema/-/archive/v2.7.5/crema-v2.7.5.tar | tar -x
+          cd crema-v2.7.5
+          make
+          make install
+          popd > /dev/null
+          rm -rf crema-v2.7.5
+
+      - name: Run initial build
+        run: |
+          packages=`find /home/build/source/ -name PKGBUILD -exec dirname {} \;`
+          crema="crema add -r ea-private -n"
+          for package in $packages
+          do
+            echo "::group::Building local package \"$(basename $package)\""
+            sudo -u build $crema -l $package
+            echo "::endgroup::"
+          done
+
+      - name: Add additional dependencies
+        run: |
+          echo -e "\n[ea-private]\nSigLevel = Optional TrustAll\nServer = file:///home/build/ea-private/\n" >> /etc/pacman.conf
+
+          i=0
+          while true
+          do
+           i=$((i+1))
+           echo "::notice ::Calculating missing dependencies (pass 1)..."
+           pacman -Sy
+           packages=`find /home/build/source/ -name PKGBUILD -exec dirname {} \; | xargs basename -a`
+           missing=$(pacman -Dkk 2>&1 | egrep `echo $packages | sed 's/ /\\|/g'` | cut -f2 -d"'")
+
+           if [ -z "${missing}" ]
+           then
+             echo "::notice ::No missing packages found"
+             break
+           fi
+
+           if [ $i -gt 5 ]
+           then
+             echo "::error ::Recursion limit exceeded for adding dependencies!"
+             exit 1
+           fi
+
+           count=$(echo $missing | tr " " "\n" | wc -l)
+           echo "::notice ::${count} missing packages found"
+
+           crema="crema add -r ea-private -n"
+
+           for package in $missing
+           do
+             echo "::group::Building package \"$package\" from AUR"
+             sudo -u build $crema -a $package
+             echo "::endgroup::"
+           done
+          done
+
+      - name: Clean up build environment
+        run: |
+          cp -rv /home/build/ea-private ./out
+
+      - name: Import signing key
+        uses: crazy-max/ghaction-import-gpg@v4
+        with:
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+
+      - name: Sign repository
+        run: |
+          pushd out > /dev/null
+
+          ln -sf ea-private.db.tar.xz.sig ea-private.db.sig
+          ln -sf ea-private.files.tar.xz.sig ea-private.files.sig
+
+          find . -name '*.zst' -exec repo-add --sign ea-private.db.tar.xz {} +
+
+          rm *.old
+
+          popd > /dev/null
+
+      - name: Push to S3
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl public-read --delete
+          env:
+            AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            SOURCE_DIR: 'out'
