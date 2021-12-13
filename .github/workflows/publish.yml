@@ -4,6 +4,19 @@ on:
   push:
 
 jobs:
+  upload-key:
+    runs-on: ubuntu-latest
+    container:
+      image: archlinux:base-devel
+    steps:
+      - name: Import signing key
+        uses: crazy-max/ghaction-import-gpg@v4
+        with:
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+      - name: Upload signing key
+        run: |
+          gpg --keyserver hkp://keyserver.ubuntu.com --send-key BAACABF6809ECEF9
+
   build-and-publish:
     runs-on: ubuntu-latest
     container:
