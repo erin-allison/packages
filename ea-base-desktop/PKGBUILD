@@ -1,8 +1,8 @@
 # Maintainer: Erin Allison <eallison@andrettikarting.com>
 
 pkgname=ea-base-desktop
-pkgver=0.0.3
-pkgrel=3
+pkgver=0.0.4
+pkgrel=1
 pkgdesc="Minimal package set to define a basic Arch Linux installation with a desktop environment"
 arch=('x86_64')
 depends=()
@@ -10,7 +10,7 @@ depends=()
 package() {
 	depends+=('ea-base')
 
-	depends+=('plasma-meta' 'plasma-wayland-session' 'firefox' 'kate' 'konsole' 'dolphin-plugins')
+	depends+=('plasma-meta' 'plasma-wayland-session' 'firefox' 'kate' 'konsole' 'dolphin-plugins' 'spectacle')
 
 	depends+=('systemd-dbus-ssh-agent')
 

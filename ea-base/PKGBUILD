@@ -1,8 +1,8 @@
 # Maintainer: Erin Allison <eallison@andrettikarting.com>
 
 pkgname=ea-base
-pkgver=0.0.3
-pkgrel=3
+pkgver=0.0.4
+pkgrel=1
 pkgdesc="Minimal package set to define a basic Arch Linux installation"
 arch=('x86_64')
 depends=()
@@ -16,8 +16,6 @@ package() {
 	depends+=('base' 'base-devel-meta')
 
 	depends+=('linux-zen' 'linux-zen-headers' 'intel-ucode' 'linux-firmware')
-
-	depends+=('systemd-numlockontty')
 
 	depends+=('mkinitcpio-sd-zfs-git' 'zfs-dkms')
 
@@ -45,5 +43,5 @@ package() {
 	depends+=('yadm')
 
 	install -Dm644 "$srcdir"/ea-personal.crt "$pkgdir"/usr/share/ca-certificates/trust-source/anchors/ea-personal.crt
-	depends+=('htop' 'openssh' 'nano' 'bind' 'rsync' 'man-db')
+	depends+=('htop' 'openssh' 'nano' 'bind' 'rsync' 'man-db' 'iotop' 'p7zip')
 }

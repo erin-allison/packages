@@ -1,8 +1,8 @@
 # Maintainer: Erin Allison <eallison@andrettikarting.com>
 
 pkgname=ea-base-desktop-devel
-pkgver=0.0.3
-pkgrel=3
+pkgver=0.0.4
+pkgrel=1
 pkgdesc="Minimal package set to define a basic Arch Linux installation with a desktop environment and development utilities"
 arch=('x86_64')
 depends=()
@@ -10,9 +10,11 @@ depends=()
 package() {
 	depends+=('ea-base-desktop')
 
-	depends+=('rider' 'aspnet-targeting-pack' 'aspnet-runtime' 'dotnet-sdk')
+	depends+=('rider-projector' 'aspnet-targeting-pack' 'aspnet-runtime' 'dotnet-sdk')
 
 	depends+=('kube-prompt' 'kubectl' 'krew' 'helm')
 
-	depends+=('zenity')
+	depends+=('podman')
+
+	depends+=('aurpublish')
 }

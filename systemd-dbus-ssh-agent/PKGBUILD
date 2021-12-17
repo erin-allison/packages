@@ -2,13 +2,12 @@
 
 pkgname=systemd-dbus-ssh-agent
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A systemd user unit for ssh-agent that publishes the socket variable to DBUS"
 url="https://salsa.debian.org/ssh-team/openssh/-/blob/master/debian/systemd/ssh-agent.service"
 license=('BSD')
 arch=('any')
 depends=()
-install=ssh-agent.install
 source=('LICENSE' 'agent-launch' 'ssh-agent.service')
 sha256sums=('73d0db766229670c7b4e1ec5e6baed54977a0694a565e7cc878c45ee834045d7' 'a92a8d1c6404e839b090bce23d23c048eacc50a5dbcc858716a1bcff98bc61c0' '140030a758c370e1992523d2c0d538bff0a2bb306f99310c3fd395816aa6266f')
 

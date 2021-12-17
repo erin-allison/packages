@@ -1,8 +1,8 @@
 # Maintainer: Erin Allison <eallison@andrettikarting.com>
 
 pkgname=ea-base-server-vmhost
-pkgver=0.0.3
-pkgrel=3
+pkgver=0.0.4
+pkgrel=1
 pkgdesc="Minimal package set to define a basic Arch Linux installation with server utilities and a hypervisor"
 arch=('x86_64')
 depends=()

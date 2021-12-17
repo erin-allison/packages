@@ -1,0 +1,16 @@
+# Maintainer: Erin Allison <eallison@andrettikarting.com>
+
+pkgname=ea-base-desktop-games
+pkgver=0.0.4
+pkgrel=1
+pkgdesc="Minimal package set to define a basic Arch Linux installation with games"
+arch=('x86_64')
+depends=()
+
+package() {
+	depends+=('ea-base-desktop')
+
+	depends+=('steam' 'protontricks')
+
+	depends+=('melvor-mod-manager' 'runescape-launcher')
+}
