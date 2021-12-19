@@ -2,6 +2,8 @@ name: Publish
 
 on:
   push:
+  schedule:
+    - cron: '0 6,18 * * *'
 
 jobs:
   upload-key:
@@ -110,8 +112,6 @@ jobs:
               echo "::endgroup::"
             done
           done
-
-          sleep 600
 
       - name: Clean up build environment
         run: |
