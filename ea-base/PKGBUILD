@@ -2,7 +2,7 @@
 
 pkgname=ea-base
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimal package set to define a basic Arch Linux installation"
 arch=('x86_64')
 depends=()
@@ -43,5 +43,7 @@ package() {
 	depends+=('yadm')
 
 	install -Dm644 "$srcdir"/ea-personal.crt "$pkgdir"/usr/share/ca-certificates/trust-source/anchors/ea-personal.crt
-	depends+=('htop' 'openssh' 'nano' 'bind' 'rsync' 'man-db' 'iotop' 'p7zip')
+	depends+=('htop' 'openssh' 'nano' 'bind' 'rsync' 'man-db' 'iotop' 'p7zip' 'jq' 'tmux')
+
+	depends+=('pacman-contrib')
 }

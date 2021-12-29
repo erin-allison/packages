@@ -2,7 +2,7 @@
 
 pkgname=ea-base-desktop-games
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimal package set to define a basic Arch Linux installation with games"
 arch=('x86_64')
 depends=()
@@ -13,4 +13,6 @@ package() {
 	depends+=('steam' 'protontricks')
 
 	depends+=('melvor-mod-manager' 'runescape-launcher')
+
+	depends+=('looking-glass')
 }

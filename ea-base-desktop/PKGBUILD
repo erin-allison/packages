@@ -2,7 +2,7 @@
 
 pkgname=ea-base-desktop
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimal package set to define a basic Arch Linux installation with a desktop environment"
 arch=('x86_64')
 depends=()
@@ -10,7 +10,7 @@ depends=()
 package() {
 	depends+=('ea-base')
 
-	depends+=('plasma-meta' 'plasma-wayland-session' 'firefox' 'kate' 'konsole' 'dolphin-plugins' 'spectacle')
+	depends+=('plasma-meta' 'plasma-wayland-session' 'firefox' 'kate' 'konsole' 'dolphin-plugins' 'spectacle' 'noto-fonts-emoji' 'nerd-fonts-hack')
 
 	depends+=('systemd-dbus-ssh-agent')
 
@@ -25,4 +25,6 @@ package() {
 	depends+=('keepassxc')
 
 	depends+=('samba' 'cups' 'brother-mfc-7860dw')
+
+	depends+=('virt-manager')
 }
