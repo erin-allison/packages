@@ -32,7 +32,7 @@ build() {
 
 package_looking-glass() {
 	pkgdesc="A client application for accessing the LookingGlass IVSHMEM device of a VM"
-	depends=('libgl' 'libegl' 'nettle' 'fontconfig' 'libxss' 'libxi' 'libxinerama')
+	depends=('libgl' 'libegl' 'nettle' 'fontconfig' 'libxss' 'libxi' 'libxinerama' 'libxpresent')
 
 	cd "${srcdir}/${_lgdir}/client/build"
 	make DESTDIR="${pkgdir}" install
