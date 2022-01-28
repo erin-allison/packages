@@ -10,7 +10,7 @@ source=('ea-personal.crt'
 	'fish.tar')
 
 sha256sums=('d88fa9fae087fe4819cb274e39c8931d53aa85766d58add1c37f73b1122ccee1'
-	'8ce06e9b244f2bb42cb311af2e9e70a55303556ffc368924cdbdc4e12b02b5b4')
+            '8eb242581e668ae33c3e38b4a4887c86b3945a1c9d63ed93c8e83d1cc63a1291')
 
 package() {
 	depends+=('base' 'base-devel-meta')
