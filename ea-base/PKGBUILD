@@ -2,7 +2,7 @@
 
 pkgname=ea-base
 pkgver=0.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Minimal package set to define a basic Arch Linux installation"
 arch=('x86_64')
 depends=()
@@ -10,7 +10,7 @@ source=('ea-personal.crt'
 	'fish.tar')
 
 sha256sums=('d88fa9fae087fe4819cb274e39c8931d53aa85766d58add1c37f73b1122ccee1'
-            '8eb242581e668ae33c3e38b4a4887c86b3945a1c9d63ed93c8e83d1cc63a1291')
+            '98d301854b5acf061f604a30d55e3933871a5bd3b7df62c705619684613a672d')
 
 package() {
 	depends+=('base' 'base-devel-meta')
