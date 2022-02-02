@@ -56,6 +56,7 @@ jobs:
           cp -r ./* /home/build/source/
           chown -R build: /home/build
           echo 'MAKEFLAGS="-j2"' >> /etc/makepkg.conf
+          cp /etc/pacman.conf /etc/pacman.conf.orig
           cat << EOF >> /etc/pacman.conf
 
           [ea-private]
@@ -87,9 +88,7 @@ jobs:
           do
             i=$((i+1))
             echo "::notice ::Calculating missing dependencies (pass $i)..."
-            packages=`find /home/build/source -name PKGBUILD -exec dirname {} \; | xargs basename -a | tr $'\n' '|'`
-            ignore="libx264.so=164-64"
-            missing=$(pacman -Dkkq 2>&1 | egrep $packages | egrep $ignore | cut -f2 -d"'")
+            missing=$(comm -13 <(pacman -Dkkq --config /etc/pacman.conf.orig 2>&1 | sort) <(pacman -Dkkq 2>&1 | sort) | cut -f2 -d"'")
 
             if [ -z "${missing}" ]
             then
