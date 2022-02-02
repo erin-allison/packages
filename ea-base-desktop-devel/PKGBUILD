@@ -10,7 +10,7 @@ depends=()
 package() {
 	depends+=('ea-base-desktop')
 
-	depends+=('rider' 'rider-projector' 'aspnet-targeting-pack' 'aspnet-runtime' 'dotnet-sdk')
+	depends+=('rider' 'aspnet-targeting-pack' 'aspnet-runtime' 'dotnet-sdk')
 
 	depends+=('kube-prompt' 'kubectl' 'krew' 'helm')
 
