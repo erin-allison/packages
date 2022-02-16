@@ -1,0 +1,19 @@
+# Maintainer: Erin Allison <erin@eallison.us>
+
+pkgname=rider-icon
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Icon for JetBrains Rider since AUR package is broken."
+url=""
+license=('Commercial')
+arch=('any')
+depends=()
+source=()
+sha256sums=()
+
+package() {
+  depends+=('rider')
+
+  install -dm755 "$pkgdir"/usr/share/icons/hicolor/scalable/apps
+  ln -sf /usr/share/rider/bin/rider.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps
+}
